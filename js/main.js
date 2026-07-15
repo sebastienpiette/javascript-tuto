@@ -1,7 +1,10 @@
 // event listeners 
-const view1 = document.getElementById('view1')
-const view2 = document.getElementById('view2')
-const view3 = document.getElementById('view3')
+const getEl = (id) => document.getElementById(id)
+const qs = (selector, parent = document) => parent.querySelector(selector)
+
+const view1 = getEl('view1')
+const view2 = getEl('view2')
+const view3 = getEl('view3')
 // console.log(view1) 
 // console.log(view2)
 
@@ -148,8 +151,8 @@ const initApp = () => {
 
 //view3 Form 
 const initApp= () => {
-    const view3 = document.querySelector("#view3");
-    const myForm = view3.querySelector("#myForm");
+    const view3 = qs("#view3");
+    const myForm = qs("#myForm", view3);
     myForm.addEventListener("submit", (event) => {
         event.preventDefault(); //IMPORTANT otherwise the text will diappera s 
         console.log("submit event"); //the text remains ion console.log
