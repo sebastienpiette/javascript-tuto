@@ -10,8 +10,17 @@ html {
     font-size: 16px;
 }
 
-body {
-    min-height: 100vh;
+/* Shared flex utility: a vertical stack centered on both axes.
+   Includes legacy -webkit-/-ms- prefixes. Reused across the layout
+   and available as a `.flex-center` class for new markup. */
+.flex-center,
+body,
+main,
+section,
+.view1 div,
+.view2,
+.view2 div,
+.view3 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -27,20 +36,11 @@ body {
     align-items: center;
 }
 
+body {
+    min-height: 100vh;
+}
+
 main {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     background-color: #708090;
     border: 1px solid #000;
     width: 100%;
@@ -84,19 +84,6 @@ nav {
 }
 
 section {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     width: 100%;
     height: 100vh;
     z-index: 1;
@@ -124,19 +111,6 @@ and display:flex for the example you want to see. */
 }
 
 .view1 div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     width: 100px;
     height: 100px;
     background-color: #000;
@@ -145,19 +119,6 @@ and display:flex for the example you want to see. */
 }
 
 .view2 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     display: none;
     color: #fff;
     max-width: 400px;
@@ -166,19 +127,6 @@ and display:flex for the example you want to see. */
 }
 
 .view2 div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     width: 200px;
     height: 200px;
     color: #fff;
@@ -186,19 +134,6 @@ and display:flex for the example you want to see. */
 }
 
 .view3 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     display: none;
     background-color: #d3d3d3;
     border: 1px solid #000;
