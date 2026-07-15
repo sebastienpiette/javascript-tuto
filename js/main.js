@@ -157,3 +157,8 @@ const initApp= () => {
 
 }
 
+// Expose functions for unit testing in a CommonJS (Node/Jest) environment.
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { doSomething, initApp }
+}
+
