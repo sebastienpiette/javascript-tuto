@@ -1,7 +1,18 @@
 // event listeners 
-const view1 = document.getElementById('view1')
-const view2 = document.getElementById('view2')
-const view3 = document.getElementById('view3')
+
+// Look up a required element and fail loudly with a descriptive message
+// instead of letting a later property access throw an opaque TypeError.
+const getRequiredElement = (selector, context = document) => {
+    const element = context.querySelector(selector)
+    if (!element) {
+        throw new Error(`Expected element "${selector}" was not found in the DOM`)
+    }
+    return element
+}
+
+const view1 = getRequiredElement('#view1')
+const view2 = getRequiredElement('#view2')
+const view3 = getRequiredElement('#view3')
 // console.log(view1) 
 // console.log(view2)
 
@@ -39,7 +50,14 @@ document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("Ready Statge : complete"); //the page is loaded although it is not exactly the same as there are different stages of the pages loading 
         //we are ready to interact with the DOM 
-        initApp();
+        // Surface init failures with context. Errors thrown inside an event
+        // listener are otherwise easy to miss, so log and re-throw.
+        try {
+            initApp();
+        } catch (error) {
+            console.error("Failed to initialise the app:", error);
+            throw error;
+        }
     }
 });
 
@@ -148,11 +166,17 @@ const initApp = () => {
 
 //view3 Form 
 const initApp= () => {
-    const view3 = document.querySelector("#view3");
-    const myForm = view3.querySelector("#myForm");
+    const view3 = getRequiredElement("#view3");
+    const myForm = getRequiredElement("#myForm", view3);
     myForm.addEventListener("submit", (event) => {
         event.preventDefault(); //IMPORTANT otherwise the text will diappera s 
-        console.log("submit event"); //the text remains ion console.log
+        // Don't swallow handler errors: report them so a failing submit
+        // isn't silently ignored.
+        try {
+            console.log("submit event"); //the text remains ion console.log
+        } catch (error) {
+            console.error("Error while handling form submit:", error);
+        }
     })
 
 }
